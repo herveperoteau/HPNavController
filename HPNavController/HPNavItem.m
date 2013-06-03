@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Hervé PEROTEAU. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "HPNavItem.h"
 #import "HPGradientView.h"
 
