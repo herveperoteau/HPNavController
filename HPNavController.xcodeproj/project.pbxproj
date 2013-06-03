@@ -10,6 +10,16 @@
 		0965C5D0175C991500688BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0965C5CF175C991500688BFC /* Foundation.framework */; };
 		0965C5D5175C991500688BFC /* HPNavController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0965C5D4175C991500688BFC /* HPNavController.h */; };
 		0965C5D7175C991500688BFC /* HPNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5D6175C991500688BFC /* HPNavController.m */; };
+		0965C5F2175C99E000688BFC /* HPCellMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5DE175C99E000688BFC /* HPCellMenuItem.m */; };
+		0965C5F3175C99E000688BFC /* HPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5E0175C99E000688BFC /* HPGradientView.m */; };
+		0965C5F4175C99E000688BFC /* HPNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5E2175C99E000688BFC /* HPNavItem.m */; };
+		0965C5F5175C99E000688BFC /* HPNavPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5E4175C99E000688BFC /* HPNavPushSegue.m */; };
+		0965C5F6175C99E000688BFC /* HPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5E6175C99E000688BFC /* HPSegmentedControl.m */; };
+		0965C5F7175C99E000688BFC /* HPSeparatorSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5E8175C99E000688BFC /* HPSeparatorSectionView.m */; };
+		0965C5F8175C99E000688BFC /* HPStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EA175C99E000688BFC /* HPStatusBar.m */; };
+		0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EC175C99E000688BFC /* HPUIGradientButton.m */; };
+		0965C5FA175C99E000688BFC /* UIView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EE175C99E000688BFC /* UIView+Gesture.m */; };
+		0965C5FB175C99E000688BFC /* UIViewController+HPNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +41,29 @@
 		0965C5D3175C991500688BFC /* HPNavController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPNavController-Prefix.pch"; sourceTree = "<group>"; };
 		0965C5D4175C991500688BFC /* HPNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPNavController.h; sourceTree = "<group>"; };
 		0965C5D6175C991500688BFC /* HPNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPNavController.m; sourceTree = "<group>"; };
+		0965C5DD175C99E000688BFC /* HPCellMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCellMenuItem.h; sourceTree = "<group>"; };
+		0965C5DE175C99E000688BFC /* HPCellMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCellMenuItem.m; sourceTree = "<group>"; };
+		0965C5DF175C99E000688BFC /* HPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGradientView.h; sourceTree = "<group>"; };
+		0965C5E0175C99E000688BFC /* HPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGradientView.m; sourceTree = "<group>"; };
+		0965C5E1175C99E000688BFC /* HPNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPNavItem.h; sourceTree = "<group>"; };
+		0965C5E2175C99E000688BFC /* HPNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPNavItem.m; sourceTree = "<group>"; };
+		0965C5E3175C99E000688BFC /* HPNavPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPNavPushSegue.h; sourceTree = "<group>"; };
+		0965C5E4175C99E000688BFC /* HPNavPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPNavPushSegue.m; sourceTree = "<group>"; };
+		0965C5E5175C99E000688BFC /* HPSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSegmentedControl.h; sourceTree = "<group>"; };
+		0965C5E6175C99E000688BFC /* HPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSegmentedControl.m; sourceTree = "<group>"; };
+		0965C5E7175C99E000688BFC /* HPSeparatorSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSeparatorSectionView.h; sourceTree = "<group>"; };
+		0965C5E8175C99E000688BFC /* HPSeparatorSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSeparatorSectionView.m; sourceTree = "<group>"; };
+		0965C5E9175C99E000688BFC /* HPStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPStatusBar.h; sourceTree = "<group>"; };
+		0965C5EA175C99E000688BFC /* HPStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPStatusBar.m; sourceTree = "<group>"; };
+		0965C5EB175C99E000688BFC /* HPUIGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPUIGradientButton.h; sourceTree = "<group>"; };
+		0965C5EC175C99E000688BFC /* HPUIGradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPUIGradientButton.m; sourceTree = "<group>"; };
+		0965C5ED175C99E000688BFC /* UIView+Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Gesture.h"; sourceTree = "<group>"; };
+		0965C5EE175C99E000688BFC /* UIView+Gesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Gesture.m"; sourceTree = "<group>"; };
+		0965C5EF175C99E000688BFC /* UIViewController+HPNavController_protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HPNavController_protected.h"; sourceTree = "<group>"; };
+		0965C5F0175C99E000688BFC /* UIViewController+HPNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HPNavController.h"; sourceTree = "<group>"; };
+		0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HPNavController.m"; sourceTree = "<group>"; };
+		0965C5FC175C99F800688BFC /* HPNavController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HPNavController.podspec; sourceTree = "<group>"; };
+		0965C5FD175C99F800688BFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +81,8 @@
 		0965C5C3175C991500688BFC = {
 			isa = PBXGroup;
 			children = (
+				0965C5FC175C99F800688BFC /* HPNavController.podspec */,
+				0965C5FD175C99F800688BFC /* README.md */,
 				0965C5D1175C991500688BFC /* HPNavController */,
 				0965C5CE175C991500688BFC /* Frameworks */,
 				0965C5CD175C991500688BFC /* Products */,
@@ -73,6 +108,27 @@
 		0965C5D1175C991500688BFC /* HPNavController */ = {
 			isa = PBXGroup;
 			children = (
+				0965C5DD175C99E000688BFC /* HPCellMenuItem.h */,
+				0965C5DE175C99E000688BFC /* HPCellMenuItem.m */,
+				0965C5DF175C99E000688BFC /* HPGradientView.h */,
+				0965C5E0175C99E000688BFC /* HPGradientView.m */,
+				0965C5E1175C99E000688BFC /* HPNavItem.h */,
+				0965C5E2175C99E000688BFC /* HPNavItem.m */,
+				0965C5E3175C99E000688BFC /* HPNavPushSegue.h */,
+				0965C5E4175C99E000688BFC /* HPNavPushSegue.m */,
+				0965C5E5175C99E000688BFC /* HPSegmentedControl.h */,
+				0965C5E6175C99E000688BFC /* HPSegmentedControl.m */,
+				0965C5E7175C99E000688BFC /* HPSeparatorSectionView.h */,
+				0965C5E8175C99E000688BFC /* HPSeparatorSectionView.m */,
+				0965C5E9175C99E000688BFC /* HPStatusBar.h */,
+				0965C5EA175C99E000688BFC /* HPStatusBar.m */,
+				0965C5EB175C99E000688BFC /* HPUIGradientButton.h */,
+				0965C5EC175C99E000688BFC /* HPUIGradientButton.m */,
+				0965C5ED175C99E000688BFC /* UIView+Gesture.h */,
+				0965C5EE175C99E000688BFC /* UIView+Gesture.m */,
+				0965C5EF175C99E000688BFC /* UIViewController+HPNavController_protected.h */,
+				0965C5F0175C99E000688BFC /* UIViewController+HPNavController.h */,
+				0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */,
 				0965C5D4175C991500688BFC /* HPNavController.h */,
 				0965C5D6175C991500688BFC /* HPNavController.m */,
 				0965C5D2175C991500688BFC /* Supporting Files */,
@@ -140,6 +196,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0965C5D7175C991500688BFC /* HPNavController.m in Sources */,
+				0965C5F2175C99E000688BFC /* HPCellMenuItem.m in Sources */,
+				0965C5F3175C99E000688BFC /* HPGradientView.m in Sources */,
+				0965C5F4175C99E000688BFC /* HPNavItem.m in Sources */,
+				0965C5F5175C99E000688BFC /* HPNavPushSegue.m in Sources */,
+				0965C5F6175C99E000688BFC /* HPSegmentedControl.m in Sources */,
+				0965C5F7175C99E000688BFC /* HPSeparatorSectionView.m in Sources */,
+				0965C5F8175C99E000688BFC /* HPStatusBar.m in Sources */,
+				0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */,
+				0965C5FA175C99E000688BFC /* UIView+Gesture.m in Sources */,
+				0965C5FB175C99E000688BFC /* UIViewController+HPNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +308,7 @@
 				0965C5DC175C991500688BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
