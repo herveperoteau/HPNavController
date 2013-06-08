@@ -173,7 +173,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    NSLog (@"%@.setSelected(%d) %@ ...", self.class, selected, labelTitle.text);
+    //NSLog (@"%@.setSelected(%d) %@ ...", self.class, selected, labelTitle.text);
 
     [super setSelected:selected animated:animated];
     

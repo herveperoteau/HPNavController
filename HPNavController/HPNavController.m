@@ -71,6 +71,10 @@
     return self;
 }
 
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
+    return NO;
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     UIViewController *top = self.topViewController;
@@ -510,6 +514,9 @@
         }
     }
     
+    viewController.hpNavItem.containerView.userInteractionEnabled = YES;
+    [self subviewsUserInteraction:viewController enabled:YES];
+    
     if (previousViewController) {
         
         if (!flagDuringInit) {
@@ -517,6 +524,9 @@
             //NSLog(@"<-- pushEnded pour %@ => endAppearenceTransition pour previous %@", viewController.class, previousViewController.class);
             [previousViewController endAppearanceTransition];
         }
+        
+        previousViewController.hpNavItem.containerView.userInteractionEnabled = NO;
+        [self subviewsUserInteraction:previousViewController enabled:NO];
     }
 
     viewController.hpNavItem.title = viewController.title; // sert au debug uniquement
@@ -546,7 +556,7 @@
 
         flagDuringInit = NO;
     
-        NSLog (@"init fin");
+       // NSLog (@"init fin");
     
         // Pas necessaire pendant l'init car sera appeler quand meme
         // quand on fait [self.window makeKeyAndVisible] au lancement de l'application
@@ -557,7 +567,16 @@
 //        [viewController endAppearanceTransition];
     }
         
-    NSLog(@"<<< pushEnded pour %@", viewController.class);
+    //NSLog(@"<<< pushEnded pour %@", viewController.class);
+}
+
+-(void) subviewsUserInteraction:(UIViewController *) viewController enabled:(BOOL)enabled{
+
+    //NSLog(@"subviewsUserInteraction %@ enabled=%d", [viewController class], enabled);
+        
+    for (UIView *view in viewController.hpNavItem.containerView.subviews) {
+        view.userInteractionEnabled = enabled;
+    }
 }
 
 
@@ -682,7 +701,11 @@
             // Fait par le remove
             //[viewController endAppearanceTransition];
         }
+        
+        viewController.hpNavItem.containerView.userInteractionEnabled = NO;
     }
+    
+    [self subviewsUserInteraction:viewController enabled:NO];
     
     if (previousViewController && !flagPopBeforePush) {
     
@@ -692,11 +715,15 @@
             [previousViewController endAppearanceTransition];
         }
         
-        if (previousViewController == self.menuViewController) {
-            
-            //NSLog(@"popEnded %@ : remet le menu avec userInteractionEnabled=YES", viewController.class);
-            self.menuViewController.hpNavItem.containerView.userInteractionEnabled = YES;
-        }
+        previousViewController.hpNavItem.containerView.userInteractionEnabled = YES;
+        [self subviewsUserInteraction:previousViewController enabled:YES];
+
+//        if (previousViewController == self.menuViewController) {
+//            
+//            //NSLog(@"popEnded %@ : remet le menu avec userInteractionEnabled=YES", viewController.class);
+//            previousViewController.hpNavItem.containerView.userInteractionEnabled = YES;
+//            [self subviewsUserInteraction:previousViewController enabled:YES];
+//        }
     }
     
     if (viewController.hpNavItem.visiblePartialOverMenuView) {
@@ -1024,7 +1051,7 @@
 
 -(void) accesDirectMenu:(id) sender {
     
-    NSLog (@"accesDirectMenu sender=%@ ...", [sender class]);
+    //NSLog (@"accesDirectMenu sender=%@ ...", [sender class]);
 
     UIViewController *top = self.topViewController;
     top.hpNavItem.visiblePartialOverMenuView = YES;
