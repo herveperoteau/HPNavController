@@ -36,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0932429B176A370500DE8CED /* HPDeviceVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDeviceVersion.h; sourceTree = "<group>"; };
 		0965C5CC175C991500688BFC /* libHPNavController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHPNavController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0965C5CF175C991500688BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0965C5D3175C991500688BFC /* HPNavController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HPNavController-Prefix.pch"; sourceTree = "<group>"; };
@@ -108,6 +109,8 @@
 		0965C5D1175C991500688BFC /* HPNavController */ = {
 			isa = PBXGroup;
 			children = (
+				0965C5D4175C991500688BFC /* HPNavController.h */,
+				0965C5D6175C991500688BFC /* HPNavController.m */,
 				0965C5DD175C99E000688BFC /* HPCellMenuItem.h */,
 				0965C5DE175C99E000688BFC /* HPCellMenuItem.m */,
 				0965C5DF175C99E000688BFC /* HPGradientView.h */,
@@ -129,8 +132,7 @@
 				0965C5EF175C99E000688BFC /* UIViewController+HPNavController_protected.h */,
 				0965C5F0175C99E000688BFC /* UIViewController+HPNavController.h */,
 				0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */,
-				0965C5D4175C991500688BFC /* HPNavController.h */,
-				0965C5D6175C991500688BFC /* HPNavController.m */,
+				0932429B176A370500DE8CED /* HPDeviceVersion.h */,
 				0965C5D2175C991500688BFC /* Supporting Files */,
 			);
 			path = HPNavController;

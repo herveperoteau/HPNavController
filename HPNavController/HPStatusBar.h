@@ -3,6 +3,8 @@
 //
 //
 
+#define kHeightStatusBar 20.0f
+
 @interface HPStatusBar : UIView
 
 + (void)showWithStatus:(NSString*)status;

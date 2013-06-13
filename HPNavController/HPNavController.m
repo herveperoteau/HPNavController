@@ -29,15 +29,19 @@
 
 
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 
 #import "HPNavController.h"
 #import "UIViewController+HPNavController_protected.h"
 #import "UIViewController+HPNavController.h"
 #import "HPNavItem.h"
 #import "HPUIGradientButton.h"
+#import "HPStatusBar.h"
+#import "HPDeviceVersion.h"
+
 
 #define kNavBarHeight 44
-#define kAnimationDuration 0.3
+#define kAnimationDuration 0.35
 #define kReduceBelow 0.9
 #define kPanGesturePercentageToInducePop 0.3
 #define kPanGesturePercentageToInducePush 0.6
@@ -349,20 +353,47 @@
     if ( !viewController.hpNavItem.containerView ) {
         
         [viewController.hpNavItem setContainerView:[[UIView alloc] initWithFrame:self.view.bounds]];
-                
+        
         CGRect navBarFrame, contentFrame;
         UINavigationBar *navBar = nil;
         
         if (viewController == self.menuViewController) {
-            
+ 
+            viewController.hpNavItem.containerView.backgroundColor = viewController.view.backgroundColor;
             // pas de navbar sur le Menu
-            contentFrame = viewController.hpNavItem.containerView.bounds;
+
+            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+                
+                contentFrame = viewController.hpNavItem.containerView.bounds;
+            }
+            else {
+           
+                // iOS7 StatusBar inclus
+                contentFrame = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
+                                          kHeightStatusBar,
+                                          viewController.hpNavItem.containerView.bounds.size.width,
+                                          viewController.hpNavItem.containerView.bounds.size.height);
+            }
         }
         else {
         
             // Divise le containerView en 2 parties : la navBar et le contentView
-            CGRectDivide(viewController.hpNavItem.containerView.bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
-    
+            
+            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+
+                CGRectDivide(viewController.hpNavItem.containerView.bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+            }
+            else {
+
+                // iOS7 StatusBar inclus
+                CGRect bounds = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
+                                           kHeightStatusBar,
+                                           viewController.hpNavItem.containerView.bounds.size.width,
+                                           viewController.hpNavItem.containerView.bounds.size.height);
+            
+                CGRectDivide(bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+            }
+            
             navBar = [[UINavigationBar alloc] initWithFrame:navBarFrame];
             navBar.delegate = self;  // pour gerer l'appui sur le BackButton
         }
