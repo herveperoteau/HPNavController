@@ -61,7 +61,8 @@
 + (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator {
     
     UIColor *barColor = [UIColor blackColor];
-    UIColor *textColor = [UIColor colorWithRed:191.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
+    //UIColor *textColor = [UIColor colorWithRed:191.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
+    UIColor *textColor = [UIColor whiteColor];
     
     [[HPStatusBar sharedView] showWithStatus:status
                                     barColor:barColor
@@ -72,7 +73,7 @@
 + (void)showErrorWithStatus:(NSString*)status {
     
     UIColor *barColor = [UIColor colorWithRed:97.0/255.0 green:4.0/255.0 blue:4.0/255.0 alpha:1.0];
-    UIColor *textColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
+    UIColor *textColor = [UIColor whiteColor];
     
     [[HPStatusBar sharedView] showWithStatus:status
                                     barColor:barColor
@@ -118,8 +119,12 @@
         stringWidth = stringSize.width;
         stringHeight = stringSize.height;
         
-        labelRect = CGRectMake((self.topBar.frame.size.width / 2) - (stringWidth / 2), 0, stringWidth, stringHeight);
+        labelRect = CGRectMake((self.topBar.frame.size.width / 2) - (stringWidth / 2),
+                               (self.topBar.frame.size.height / 2) - (stringHeight / 2),
+                               stringWidth,
+                               stringHeight);
     }
+    
     self.stringLabel.frame = labelRect;
     self.stringLabel.alpha = 0.0;
     self.stringLabel.hidden = NO;
@@ -169,6 +174,7 @@
     if (status==nil || [status isEqualToString:stringLabel.text] ) {
         
         [UIView animateWithDuration:0.4 animations:^{
+            
             self.stringLabel.alpha = 0.0;
             
             if (activityIndicator)
@@ -244,10 +250,20 @@
 #else
         stringLabel.textAlignment = NSTextAlignmentCenter;
 #endif
-		stringLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-		stringLabel.font = [UIFont boldSystemFontOfSize:14.0];
-		stringLabel.shadowColor = [UIColor blackColor];
-		stringLabel.shadowOffset = CGSizeMake(0, -1);
+		stringLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+        
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+            
+            stringLabel.font = [UIFont boldSystemFontOfSize:14.0];
+        }
+        else {
+            
+            UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            stringLabel.font = [UIFont fontWithName:font.fontName size:14];
+        }
+        
+		//stringLabel.shadowColor = [UIColor blackColor];
+		//stringLabel.shadowOffset = CGSizeMake(0, -1);
         stringLabel.numberOfLines = 0;
     }
     
