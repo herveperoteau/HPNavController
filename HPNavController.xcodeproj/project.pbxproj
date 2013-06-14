@@ -20,6 +20,7 @@
 		0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EC175C99E000688BFC /* HPUIGradientButton.m */; };
 		0965C5FA175C99E000688BFC /* UIView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EE175C99E000688BFC /* UIView+Gesture.m */; };
 		0965C5FB175C99E000688BFC /* UIViewController+HPNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */; };
+		09E35C51176AFBA900C75002 /* HPNavStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E35C50176AFBA900C75002 /* HPNavStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,8 @@
 		0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HPNavController.m"; sourceTree = "<group>"; };
 		0965C5FC175C99F800688BFC /* HPNavController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HPNavController.podspec; sourceTree = "<group>"; };
 		0965C5FD175C99F800688BFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		09E35C4F176AFBA900C75002 /* HPNavStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPNavStyle.h; sourceTree = "<group>"; };
+		09E35C50176AFBA900C75002 /* HPNavStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPNavStyle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 		0965C5D1175C991500688BFC /* HPNavController */ = {
 			isa = PBXGroup;
 			children = (
+				09E35C4F176AFBA900C75002 /* HPNavStyle.h */,
+				09E35C50176AFBA900C75002 /* HPNavStyle.m */,
 				0965C5D4175C991500688BFC /* HPNavController.h */,
 				0965C5D6175C991500688BFC /* HPNavController.m */,
 				0965C5DD175C99E000688BFC /* HPCellMenuItem.h */,
@@ -206,6 +211,7 @@
 				0965C5F7175C99E000688BFC /* HPSeparatorSectionView.m in Sources */,
 				0965C5F8175C99E000688BFC /* HPStatusBar.m in Sources */,
 				0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */,
+				09E35C51176AFBA900C75002 /* HPNavStyle.m in Sources */,
 				0965C5FA175C99E000688BFC /* UIView+Gesture.m in Sources */,
 				0965C5FB175C99E000688BFC /* UIViewController+HPNavController.m in Sources */,
 			);

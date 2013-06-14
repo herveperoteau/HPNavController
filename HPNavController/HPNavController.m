@@ -38,6 +38,7 @@
 #import "HPUIGradientButton.h"
 #import "HPStatusBar.h"
 #import "HPDeviceVersion.h"
+#import "HPNavStyle.h"
 
 
 #define kNavBarHeight 44
@@ -372,7 +373,7 @@
                 contentFrame = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
                                           kHeightStatusBar,
                                           viewController.hpNavItem.containerView.bounds.size.width,
-                                          viewController.hpNavItem.containerView.bounds.size.height);
+                                          viewController.hpNavItem.containerView.bounds.size.height-kHeightStatusBar);
             }
         }
         else {
@@ -389,7 +390,7 @@
                 CGRect bounds = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
                                            kHeightStatusBar,
                                            viewController.hpNavItem.containerView.bounds.size.width,
-                                           viewController.hpNavItem.containerView.bounds.size.height);
+                                           viewController.hpNavItem.containerView.bounds.size.height-kHeightStatusBar);
             
                 CGRectDivide(bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
             }
@@ -472,10 +473,7 @@
         [viewController.hpNavItem.containerView addSubview:viewController.view];
         
         // coins arrondis
-        viewController.hpNavItem.containerView.layer.borderColor = [UIColor grayColor].CGColor;
-        viewController.hpNavItem.containerView.layer.borderWidth = 1.0f;
-        viewController.hpNavItem.containerView.layer.cornerRadius = 8.0f;
-        viewController.hpNavItem.containerView.layer.masksToBounds = YES;
+        [HPNavStyle setRoundGrayBorder:viewController.hpNavItem.containerView];
     }
 }
 

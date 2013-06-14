@@ -6,6 +6,8 @@
 //
 
 #import "HPStatusBar.h"
+#import "HPNavStyle.h"
+#import "HPDeviceVersion.h"
 
 @interface HPStatusBar ()
     @property (nonatomic, strong, readonly) UIWindow *overlayWindow;
@@ -28,6 +30,20 @@
     return sharedView;
 }
 
+- (id)initWithFrame:(CGRect)frame {
+	
+    if ((self = [super initWithFrame:frame])) {
+        
+		self.userInteractionEnabled = NO;
+        self.backgroundColor = [UIColor clearColor];
+		self.alpha = 0;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+    }
+    
+    return self;
+}
+
 + (void)showSuccessWithStatus:(NSString*)status
 {
     [HPStatusBar showWithStatus:status];
@@ -44,7 +60,7 @@
 
 + (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator {
     
-    UIColor *barColor = [UIColor clearColor];
+    UIColor *barColor = [UIColor blackColor];
     UIColor *textColor = [UIColor colorWithRed:191.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
     
     [[HPStatusBar sharedView] showWithStatus:status
@@ -76,19 +92,6 @@
 + (void)dismiss:(NSString *)status {
 
     [[HPStatusBar sharedView] dismiss:status];
-}
-
-- (id)initWithFrame:(CGRect)frame {
-	
-    if ((self = [super initWithFrame:frame])) {
-        
-		self.userInteractionEnabled = NO;
-        self.backgroundColor = [UIColor clearColor];
-		self.alpha = 0;
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    }
-    
-    return self;
 }
 
 - (void)showWithStatus:(NSString *)status barColor:(UIColor*)barColor textColor:(UIColor*)textColor activityIndicator:(BOOL)withActivityIndicator{
@@ -186,12 +189,20 @@
 - (UIWindow *)overlayWindow {
     
     if(!overlayWindow) {
+        
         overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         overlayWindow.backgroundColor = [UIColor clearColor];
         overlayWindow.userInteractionEnabled = NO;
         overlayWindow.windowLevel = UIWindowLevelStatusBar;
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            
+            // StatusBar inclus
+            [HPNavStyle setRoundGrayBorder:overlayWindow];
+        }
     }
+    
     return overlayWindow;
 }
 
