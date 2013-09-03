@@ -20,6 +20,7 @@
 		0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EC175C99E000688BFC /* HPUIGradientButton.m */; };
 		0965C5FA175C99E000688BFC /* UIView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5EE175C99E000688BFC /* UIView+Gesture.m */; };
 		0965C5FB175C99E000688BFC /* UIViewController+HPNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */; };
+		09D7C4EA17D670420081EF58 /* HPNavModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7C4E917D670420081EF58 /* HPNavModalSegue.m */; };
 		09E35C51176AFBA900C75002 /* HPNavStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E35C50176AFBA900C75002 /* HPNavStyle.m */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HPNavController.m"; sourceTree = "<group>"; };
 		0965C5FC175C99F800688BFC /* HPNavController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HPNavController.podspec; sourceTree = "<group>"; };
 		0965C5FD175C99F800688BFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		09D7C4E817D670420081EF58 /* HPNavModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPNavModalSegue.h; sourceTree = "<group>"; };
+		09D7C4E917D670420081EF58 /* HPNavModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPNavModalSegue.m; sourceTree = "<group>"; };
 		09E35C4F176AFBA900C75002 /* HPNavStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPNavStyle.h; sourceTree = "<group>"; };
 		09E35C50176AFBA900C75002 /* HPNavStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPNavStyle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,18 +115,21 @@
 		0965C5D1175C991500688BFC /* HPNavController */ = {
 			isa = PBXGroup;
 			children = (
-				09E35C4F176AFBA900C75002 /* HPNavStyle.h */,
-				09E35C50176AFBA900C75002 /* HPNavStyle.m */,
-				0965C5D4175C991500688BFC /* HPNavController.h */,
-				0965C5D6175C991500688BFC /* HPNavController.m */,
 				0965C5DD175C99E000688BFC /* HPCellMenuItem.h */,
 				0965C5DE175C99E000688BFC /* HPCellMenuItem.m */,
+				0932429B176A370500DE8CED /* HPDeviceVersion.h */,
 				0965C5DF175C99E000688BFC /* HPGradientView.h */,
 				0965C5E0175C99E000688BFC /* HPGradientView.m */,
+				0965C5D4175C991500688BFC /* HPNavController.h */,
+				0965C5D6175C991500688BFC /* HPNavController.m */,
 				0965C5E1175C99E000688BFC /* HPNavItem.h */,
 				0965C5E2175C99E000688BFC /* HPNavItem.m */,
+				09D7C4E817D670420081EF58 /* HPNavModalSegue.h */,
+				09D7C4E917D670420081EF58 /* HPNavModalSegue.m */,
 				0965C5E3175C99E000688BFC /* HPNavPushSegue.h */,
 				0965C5E4175C99E000688BFC /* HPNavPushSegue.m */,
+				09E35C4F176AFBA900C75002 /* HPNavStyle.h */,
+				09E35C50176AFBA900C75002 /* HPNavStyle.m */,
 				0965C5E5175C99E000688BFC /* HPSegmentedControl.h */,
 				0965C5E6175C99E000688BFC /* HPSegmentedControl.m */,
 				0965C5E7175C99E000688BFC /* HPSeparatorSectionView.h */,
@@ -132,13 +138,12 @@
 				0965C5EA175C99E000688BFC /* HPStatusBar.m */,
 				0965C5EB175C99E000688BFC /* HPUIGradientButton.h */,
 				0965C5EC175C99E000688BFC /* HPUIGradientButton.m */,
+				0965C5D2175C991500688BFC /* Supporting Files */,
 				0965C5ED175C99E000688BFC /* UIView+Gesture.h */,
 				0965C5EE175C99E000688BFC /* UIView+Gesture.m */,
-				0965C5EF175C99E000688BFC /* UIViewController+HPNavController_protected.h */,
 				0965C5F0175C99E000688BFC /* UIViewController+HPNavController.h */,
 				0965C5F1175C99E000688BFC /* UIViewController+HPNavController.m */,
-				0932429B176A370500DE8CED /* HPDeviceVersion.h */,
-				0965C5D2175C991500688BFC /* Supporting Files */,
+				0965C5EF175C99E000688BFC /* UIViewController+HPNavController_protected.h */,
 			);
 			path = HPNavController;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				0965C5F5175C99E000688BFC /* HPNavPushSegue.m in Sources */,
 				0965C5F6175C99E000688BFC /* HPSegmentedControl.m in Sources */,
 				0965C5F7175C99E000688BFC /* HPSeparatorSectionView.m in Sources */,
+				09D7C4EA17D670420081EF58 /* HPNavModalSegue.m in Sources */,
 				0965C5F8175C99E000688BFC /* HPStatusBar.m in Sources */,
 				0965C5F9175C99E000688BFC /* HPUIGradientButton.m in Sources */,
 				09E35C51176AFBA900C75002 /* HPNavStyle.m in Sources */,

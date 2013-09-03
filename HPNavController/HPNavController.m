@@ -571,11 +571,14 @@
         
         [viewController.hpNavItem removeMaskView];  // pour la rendre a nouveau "touchable"
         [viewController.hpNavItem.containerView removeAllGestureRecognizer];
+        
+        if (viewController.hpNavItem.popWithGesture) {
     
-        UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(viewDidPan:)];
-        gestureRecognizer.delegate = self;
-        [viewController.hpNavItem.containerView addGestureRecognizer:gestureRecognizer];
+            UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                                action:@selector(viewDidPan:)];
+            gestureRecognizer.delegate = self;
+            [viewController.hpNavItem.containerView addGestureRecognizer:gestureRecognizer];
+        }
     }
     
     // on va repositionner la hierarchy qu'on aurait pu cacher sur un acces direct au menu

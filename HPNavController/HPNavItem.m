@@ -16,6 +16,16 @@
     HPGradientView *maskContainerView;
 }
 
+-(id) init {
+
+    if ( (self = [super init]) ) {
+        
+        self.popWithGesture = YES;
+    }
+    
+    return self;
+}
+
 -(void) dealloc {
         
     //NSLog(@"%@.dealloc (%@)", self.class, self.title);

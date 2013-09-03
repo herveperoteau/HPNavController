@@ -10,6 +10,7 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) BOOL visiblePartialOverMenuView;
+@property (nonatomic, assign) BOOL popWithGesture;
 
 -(UIView *) containerView;
 -(void) setContainerView:(UIView *) view;
