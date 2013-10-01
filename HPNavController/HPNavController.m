@@ -64,6 +64,13 @@
     BOOL flagDuringInit;
 }
 
+#pragma mark - StatusBar style
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark methodes principales (init, push, pop)
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController {
