@@ -8,12 +8,14 @@
 #import "HPStatusBar.h"
 #import "HPNavStyle.h"
 #import "HPDeviceVersion.h"
+#import "UIViewController+HPNavController.h"
 
 @interface HPStatusBar ()
     @property (nonatomic, strong, readonly) UIWindow *overlayWindow;
     @property (nonatomic, strong, readonly) UIView *topBar;
     @property (nonatomic, strong) UILabel *stringLabel;
     @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+    @property (nonatomic, weak) UIViewController *from;
 @end
 
 @implementation HPStatusBar
@@ -44,21 +46,21 @@
     return self;
 }
 
-+ (void)showSuccessWithStatus:(NSString*)status
++ (void)showSuccessWithStatus:(NSString*)status fromViewController:(UIViewController *)viewController
 {
-    [HPStatusBar showWithStatus:status];
+    [HPStatusBar showWithStatus:status fromViewController:viewController];
     
     [[HPStatusBar sharedView] performSelector:@selector(dismiss:)
                                    withObject:status
                                    afterDelay:2.0 ];
 }
 
-+ (void)showWithStatus:(NSString*)status {
++ (void)showWithStatus:(NSString*)status  fromViewController:(UIViewController *)viewController {
 
-    [HPStatusBar showWithStatus:status withActivityIndicator:NO];
+    [HPStatusBar showWithStatus:status withActivityIndicator:NO fromViewController:viewController];
 }
 
-+ (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator {
++ (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator  fromViewController:(UIViewController *)viewController {
     
     UIColor *barColor = [UIColor blackColor];
     //UIColor *textColor = [UIColor colorWithRed:191.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
@@ -67,10 +69,11 @@
     [[HPStatusBar sharedView] showWithStatus:status
                                     barColor:barColor
                                    textColor:textColor
-                           activityIndicator:withActivityIndicator];
+                           activityIndicator:withActivityIndicator
+                          fromViewController:viewController];
 }
 
-+ (void)showErrorWithStatus:(NSString*)status {
++ (void)showErrorWithStatus:(NSString*)status  fromViewController:(UIViewController *)viewController {
     
     UIColor *barColor = [UIColor colorWithRed:97.0/255.0 green:4.0/255.0 blue:4.0/255.0 alpha:1.0];
     UIColor *textColor = [UIColor whiteColor];
@@ -78,11 +81,32 @@
     [[HPStatusBar sharedView] showWithStatus:status
                                     barColor:barColor
                                    textColor:textColor
-                           activityIndicator:NO];
+                           activityIndicator:NO
+                          fromViewController:viewController];
 
     [[HPStatusBar sharedView] performSelector:@selector(dismiss:)
                                    withObject:status
                                    afterDelay:2.0 ];
+}
+
++ (void)showWithStatus:(NSString*)status {
+    
+    [HPStatusBar showWithStatus:status fromViewController:nil];
+}
+
++ (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator {
+    
+    [HPStatusBar showWithStatus:status withActivityIndicator:withActivityIndicator fromViewController:nil];
+}
+
++ (void)showErrorWithStatus:(NSString*)status {
+    
+    [HPStatusBar showErrorWithStatus:status fromViewController:nil];
+}
+
++ (void)showSuccessWithStatus:(NSString*)status {
+    
+    [HPStatusBar showSuccessWithStatus:status fromViewController:nil];
 }
 
 + (void)dismiss {
@@ -95,7 +119,7 @@
     [[HPStatusBar sharedView] dismiss:status];
 }
 
-- (void)showWithStatus:(NSString *)status barColor:(UIColor*)barColor textColor:(UIColor*)textColor activityIndicator:(BOOL)withActivityIndicator{
+- (void)showWithStatus:(NSString *)status barColor:(UIColor*)barColor textColor:(UIColor*)textColor activityIndicator:(BOOL)withActivityIndicator fromViewController:(UIViewController *)viewController{
     
     [HPStatusBar cancelPreviousPerformRequestsWithTarget:[HPStatusBar sharedView]];
 
@@ -144,6 +168,10 @@
         }
     }
     
+    [self.from setNeedsStatusBarAppearanceUpdate];
+    
+    self.from = viewController;
+    
     [UIView animateWithDuration:0.4 animations:^{
         
         self.stringLabel.alpha = 1.0;
@@ -167,11 +195,19 @@
     
     [activityIndicator removeFromSuperview];
     activityIndicator = nil;
+    
+    [self.from setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void) dismiss:(NSString *)status
 {
     if (status==nil || [status isEqualToString:stringLabel.text] ) {
+        
+        if (status == nil) {
+            
+            [self dismissEnd];
+            return;
+        }
         
         [UIView animateWithDuration:0.4 animations:^{
             

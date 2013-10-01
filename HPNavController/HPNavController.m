@@ -351,6 +351,8 @@
     // Insert View in NavController
     [self.view addSubview:viewController.hpNavItem.containerView];
     
+    [viewController setNeedsStatusBarAppearanceUpdate];
+    
     //NSLog(@"<<< pushPrepare %@", viewController.class);
 
     
