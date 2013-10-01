@@ -626,7 +626,7 @@
     //NSLog(@">>> popPrepare %@", viewController.class);
     
     UIViewController *previousViewController = [self ancestorViewControllerTo:viewController];
-    
+
     self.focusedViewController = previousViewController;
 
     if (previousViewController == self.menuViewController && !flagPopBeforePush) {
@@ -800,7 +800,9 @@
     }
     
     [self removeFromParent:viewController];
-        
+
+    [previousViewController setNeedsStatusBarAppearanceUpdate];
+
     //NSLog(@"<<< popEnded %@", viewController.class);
     
     if (completion)
