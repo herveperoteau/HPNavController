@@ -586,7 +586,9 @@
             UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                                 action:@selector(viewDidPan:)];
             gestureRecognizer.delegate = self;
+            
             [viewController.hpNavItem.containerView addGestureRecognizer:gestureRecognizer];
+            
         }
     }
     
@@ -831,6 +833,79 @@
 
 
 #pragma mark - Gesture
+
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    
+//    NSLog(@"shouldRecognizeSimultaneouslyWithGestureRecognizer %@ %@", gestureRecognizer, otherGestureRecognizer);
+//    
+//    
+//    return NO;
+//}
+
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    
+//
+//    NSLog(@"shouldBeRequiredToFailByGestureRecognizer %@ %@", gestureRecognizer, otherGestureRecognizer);
+//    
+//    
+//    return YES;
+//
+//}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
+    UIView *viewTouch = touch.view;
+    UIView *superViewTouch = touch.view.superview;
+    
+    static Class deleteConfirmationViewClass;
+    
+    if (!deleteConfirmationViewClass) {
+        deleteConfirmationViewClass = NSClassFromString(@"UITableViewCellDeleteConfirmationView");
+    }
+
+    if ([superViewTouch isKindOfClass:deleteConfirmationViewClass] ||
+        [viewTouch isKindOfClass:deleteConfirmationViewClass]) {
+        
+        NSLog(@"HPNavController: Don't pan gesture, because DeleteConfirmationView !!!");
+        return NO;
+    }
+
+    static Class reorderControlClass;
+    
+    if (!reorderControlClass) {
+        reorderControlClass = NSClassFromString(@"UITableViewCellReorderControl");
+    }
+
+    if ([superViewTouch isKindOfClass:reorderControlClass] ||
+        [viewTouch isKindOfClass:reorderControlClass]) {
+        
+        NSLog(@"HPNavController: Don't pan gesture, because reorderControlClass !!!");
+        return NO;
+    }
+
+    static Class tableCellContentViewClass;
+    
+    if (!tableCellContentViewClass) {
+        tableCellContentViewClass = NSClassFromString(@"UITableViewCellContentView");
+    }
+    
+    if ([superViewTouch isKindOfClass:tableCellContentViewClass] ||
+        [viewTouch isKindOfClass:tableCellContentViewClass]) {
+
+        CGPoint pt = [touch locationInView:self.view];
+    
+        if (pt.x > 2 * self.view.frame.size.width / 3) {
+        
+            NSLog(@"touch.view=%@ super=%@ touch=%f, %f", [touch.view class], [touch.view.superview class],
+                  pt.x, pt.y);
+    
+            return NO;
+        }
+    }
+    
+    return ![touch.view isKindOfClass:[UISlider class]];
+}
+
 
 -(void) viewDidTapWhenMenuDisplayed:(id) sender {
     
@@ -1103,13 +1178,6 @@
     
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    static Class reorderControlClass;
-    if (!reorderControlClass) {
-        reorderControlClass = NSClassFromString(@"UITableViewCellReorderControl");
-    }
-    return ![touch.view isKindOfClass:[UISlider class]] && ![touch.view isKindOfClass:reorderControlClass];
-}
 
 
 @end
