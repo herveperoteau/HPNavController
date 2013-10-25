@@ -896,8 +896,8 @@
     
         if (pt.x > 2 * self.view.frame.size.width / 3) {
         
-            NSLog(@"touch.view=%@ super=%@ touch=%f, %f", [touch.view class], [touch.view.superview class],
-                  pt.x, pt.y);
+//            NSLog(@"touch.view=%@ super=%@ touch=%f, %f", [touch.view class], [touch.view.superview class],
+//                  pt.x, pt.y);
     
             return NO;
         }
