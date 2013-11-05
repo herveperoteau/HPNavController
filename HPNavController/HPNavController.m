@@ -652,9 +652,9 @@
         if (!flagDuringInit) {
         //NSLog(@"--> popPrepare %@ -> beginAppearance=NO pour %@", viewController.class, viewController.class);
             
-            // fait par le remove
-//            [viewController beginAppearanceTransition:NO
-//                                             animated:animated];
+            // fait par le remove ??
+            [viewController beginAppearanceTransition:NO
+                                             animated:animated];
         }
     }
     
@@ -741,8 +741,8 @@
             
             //NSLog(@"<-- popEnded %@ : endAppearance pour %@", viewController.class, viewController.class);
             
-            // Fait par le remove
-            //[viewController endAppearanceTransition];
+            // Fait par le remove ??
+            [viewController endAppearanceTransition];
         }
         
         viewController.hpNavItem.containerView.userInteractionEnabled = NO;
