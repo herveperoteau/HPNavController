@@ -58,8 +58,6 @@
     }
 }
 
-
-
 -(void) setOpacityMaskView:(float)opacity {
     
     [self addMaskView];
@@ -68,11 +66,7 @@
 
 -(void) removeMaskView {
     
-    //NSLog(@"removeMaskView ...");
-    
     if (maskContainerView != nil) {
-        
-        //NSLog(@"removeMaskView removeFromSuperview ...");
         
         [maskContainerView removeFromSuperview];
         maskContainerView = nil;
