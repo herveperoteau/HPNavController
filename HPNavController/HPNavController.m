@@ -432,39 +432,45 @@
                 
                 NSLog(@"create btn acces direct menu pour %@", [viewController class]);
                 
-                HPUIGradientButton *gradientButton = [[HPUIGradientButton alloc] initWithFrame:CGRectMake(0, 0, 37, 31)
-                                                                                         style:HPUIGradientButtonStyleDefault
-                                                                                  cornerRadius:6.0
-                                                                                   radiusStyle:HPUIGradientButtonRadiusStyleAll
-                                                                                   borderWidth:2.0
-                                                                                       andText:nil];
+//                HPUIGradientButton *btnAccesMenu = [[HPUIGradientButton alloc] initWithFrame:CGRectMake(0, 0, 37, 31)
+//                                                                                         style:HPUIGradientButtonStyleDefault
+//                                                                                  cornerRadius:6.0
+//                                                                                   radiusStyle:HPUIGradientButtonRadiusStyleAll
+//                                                                                   borderWidth:2.0
+//                                                                                       andText:nil];
+//                
+//                [btnAccesMenu addTarget:self
+//                                   action:@selector(accesDirectMenu:)
+//                         forControlEvents:UIControlEventTouchUpInside];
+//                
+//                if (self.iconBtnMenu != nil) {
+//                    
+//                    btnAccesMenu.leftAccessoryImage = self.iconBtnMenu;
+//                    btnAccesMenu.leftHighlightedAccessoryImage = self.iconBtnMenuSelected;
+//                    btnAccesMenu.text = nil;
+//                    btnAccesMenu.highlightedText = nil;
+//                }
+//                
+//                /*
+//                
+//                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 37, 31)];
+//                [btn addTarget:self
+//                                   action:@selector(accesDirectMenu:)
+//                         forControlEvents:UIControlEventTouchUpInside];
+//                
+//                [btn setImage:[UIImage imageNamed:@"menu-icon"] forState:UIControlStateNormal];
+//                [btn setImage:[UIImage imageNamed:@"menu-icon-selected"] forState:UIControlStateHighlighted];
+//                
+//                UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc] initWithCustomView:btn];
+//                 */
+//                
+//                UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc] initWithCustomView:btnAccesMenu];
                 
-                [gradientButton addTarget:self
-                                   action:@selector(accesDirectMenu:)
-                         forControlEvents:UIControlEventTouchUpInside];
+                UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc] initWithImage:self.iconBtnMenu
+                                                                            style:UIBarButtonItemStylePlain
+                                                                           target:self
+                                                                           action:@selector(accesDirectMenu:)];
                 
-                if (self.iconBtnMenu != nil) {
-                    
-                    gradientButton.leftAccessoryImage = self.iconBtnMenu;
-                    gradientButton.leftHighlightedAccessoryImage = self.iconBtnMenuSelected;
-                    gradientButton.text = nil;
-                    gradientButton.highlightedText = nil;
-                }
-                
-                /*
-                
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 37, 31)];
-                [btn addTarget:self
-                                   action:@selector(accesDirectMenu:)
-                         forControlEvents:UIControlEventTouchUpInside];
-                
-                [btn setImage:[UIImage imageNamed:@"menu-icon"] forState:UIControlStateNormal];
-                [btn setImage:[UIImage imageNamed:@"menu-icon-selected"] forState:UIControlStateHighlighted];
-                
-                UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc] initWithCustomView:btn];
-                 */
-                
-                UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc] initWithCustomView:gradientButton];
                 viewController.navigationItem.leftBarButtonItem = btnMenu;
             }
         }
