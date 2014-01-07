@@ -341,7 +341,8 @@
 
     // Encapsulation dans un ContainerView (NavBar+Content)
     [self ensureContainerViewExistsForController:viewController];
-
+    
+    
     
     // Positionne le ContainerView a droite l'ecran
     CGRect rect = self.view.bounds;
@@ -490,6 +491,9 @@
         // coins arrondis
         [HPNavStyle setRoundGrayBorder:viewController.hpNavItem.containerView];
     }
+    
+    // border
+    [HPNavStyle showBorder:viewController.hpNavItem.containerView];
 }
 
 
@@ -631,10 +635,10 @@
 
 -(void) popPrepare:(UIViewController *)viewController animated:(BOOL) animated  {
     
-    //NSLog(@">>> popPrepare %@", viewController.class);
+    NSLog(@">>> popPrepare %@", viewController.class);
     
     UIViewController *previousViewController = [self ancestorViewControllerTo:viewController];
-
+    
     self.focusedViewController = previousViewController;
 
     if (previousViewController == self.menuViewController && !flagPopBeforePush) {

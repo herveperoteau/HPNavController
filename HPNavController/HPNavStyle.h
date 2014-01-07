@@ -12,4 +12,7 @@
 
 +(void) setRoundGrayBorder:(UIView *) view;
 
++(void) hideBorder:(UIView *) view;
++(void) showBorder:(UIView *) view;
+    
 @end
