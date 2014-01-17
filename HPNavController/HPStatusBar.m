@@ -137,12 +137,26 @@
     CGFloat stringHeight = 0;
     
     if(labelText) {
-    
-        CGSize stringSize = [labelText sizeWithFont:self.stringLabel.font
-                                  constrainedToSize:CGSizeMake(self.topBar.frame.size.width, self.topBar.frame.size.height)];
-        stringWidth = stringSize.width;
-        stringHeight = stringSize.height;
         
+        CGSize sizeTopBar = CGSizeMake(self.topBar.frame.size.width, self.topBar.frame.size.height);
+        
+//        CGSize stringSize = [labelText sizeWithFont:self.stringLabel.font
+//                                  constrainedToSize:CGSizeMake(self.topBar.frame.size.width, self.topBar.frame.size.height)];
+//        stringWidth = stringSize.width;
+//        stringHeight = stringSize.height;
+//
+//        NSLog(@"version 1 size (%f x %f)", stringWidth, stringHeight);
+        
+        CGRect stringRect = [labelText boundingRectWithSize:sizeTopBar
+                                                    options:(NSStringDrawingUsesFontLeading)
+                                                 attributes:@{NSFontAttributeName:self.stringLabel.font}
+                                                    context:nil];
+        
+        stringWidth = stringRect.size.width;
+        stringHeight = stringRect.size.height;
+        
+//        NSLog(@"version 2 size (%f x %f)", stringWidth, stringHeight);
+
         labelRect = CGRectMake((self.topBar.frame.size.width / 2) - (stringWidth / 2),
                                (self.topBar.frame.size.height / 2) - (stringHeight / 2),
                                stringWidth,
