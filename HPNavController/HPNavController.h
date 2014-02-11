@@ -19,6 +19,9 @@
 @property(nonatomic, readonly) NSArray *viewControllers;
 @property(nonatomic, readonly) UIViewController *topViewController;
 @property(nonatomic, readonly) UIViewController *focusedViewController;
+@property(nonatomic, readonly) UIImage *iconBtnMenu;
+@property(nonatomic, readonly) UIImage *iconBtnMenuSelected;
+
 
 -(id) initWithRootViewController:(UIViewController *)rootViewController;
 -(void) pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
