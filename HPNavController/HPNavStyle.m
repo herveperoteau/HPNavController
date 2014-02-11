@@ -21,7 +21,7 @@
 
 +(void) hideBorder:(UIView *) view {
 
-    NSLog(@"%@.hideBorder ...", self.class);
+    //NSLog(@"%@.hideBorder ...", self.class);
     view.layer.borderColor = [UIColor clearColor].CGColor;
     [view.layer setNeedsDisplay];
     [view.layer displayIfNeeded];
@@ -29,7 +29,7 @@
 
 +(void) showBorder:(UIView *) view {
     
-    NSLog(@"%@.showBorder ...", self.class);
+    //NSLog(@"%@.showBorder ...", self.class);
     view.layer.borderColor = [UIColor grayColor].CGColor;
     [view.layer setNeedsDisplay];
     [view.layer displayIfNeeded];

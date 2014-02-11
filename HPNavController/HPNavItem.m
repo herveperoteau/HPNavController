@@ -26,11 +26,10 @@
     return self;
 }
 
--(void) dealloc {
-        
-    //NSLog(@"%@.dealloc (%@)", self.class, self.title);
-}
-
+//-(void) dealloc {
+//        
+//    NSLog(@"%@.dealloc (%@)", self.class, self.title);
+//}
 
 -(UIView *) containerView {
 

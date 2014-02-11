@@ -9,6 +9,7 @@
 #import "HPNavStyle.h"
 #import "HPDeviceVersion.h"
 #import "UIViewController+HPNavController.h"
+#import "HPNavItem.h"
 
 @interface HPStatusBar ()
     @property (nonatomic, strong, readonly) UIWindow *overlayWindow;
@@ -63,6 +64,12 @@
 + (void)showWithStatus:(NSString*)status withActivityIndicator:(BOOL)withActivityIndicator  fromViewController:(UIViewController *)viewController {
     
     UIColor *barColor = [UIColor blackColor];
+    
+    if (viewController.hpNavItem.colorNavBar) {
+        
+        barColor = viewController.hpNavItem.colorNavBar;
+    }
+    
     //UIColor *textColor = [UIColor colorWithRed:191.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
     UIColor *textColor = [UIColor whiteColor];
     

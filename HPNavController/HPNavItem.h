@@ -12,6 +12,9 @@
 @property (nonatomic, assign) BOOL visiblePartialOverMenuView;
 @property (nonatomic, assign) BOOL popWithGesture;
 
+@property (nonatomic, strong) UIColor *colorNavBar;
+@property (nonatomic, assign) BOOL hideNavBar;
+
 -(UIView *) containerView;
 -(void) setContainerView:(UIView *) view;
 

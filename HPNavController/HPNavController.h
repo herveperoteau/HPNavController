@@ -20,9 +20,10 @@
 @property(nonatomic, readonly) UIViewController *topViewController;
 @property(nonatomic, readonly) UIViewController *focusedViewController;
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController;
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
-- (UIViewController *)popViewControllerAnimated:(BOOL)animated;
+-(id) initWithRootViewController:(UIViewController *)rootViewController;
+-(void) pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
+-(UIViewController *) popViewControllerAnimated:(BOOL)animated;
+-(void) accesDirectMenu:(id) sender;
 
 #pragma mark - Gestion du Menu
 

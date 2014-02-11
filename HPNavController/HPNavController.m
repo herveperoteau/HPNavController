@@ -368,17 +368,19 @@
         CGRect navBarFrame, contentFrame;
         UINavigationBar *navBar = nil;
         
+        NSLog(@"%@ hideNavBar=%d", viewController.class, viewController.hpNavItem.hideNavBar);
+        
         if (viewController == self.menuViewController) {
- 
+            
             viewController.hpNavItem.containerView.backgroundColor = viewController.view.backgroundColor;
             // pas de navbar sur le Menu
-
+            
             if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
                 
                 contentFrame = viewController.hpNavItem.containerView.bounds;
             }
             else {
-           
+                
                 // iOS7 StatusBar inclus
                 contentFrame = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
                                           kHeightStatusBar,
@@ -387,26 +389,41 @@
             }
         }
         else {
-        
-            // Divise le containerView en 2 parties : la navBar et le contentView
             
-            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-
-                CGRectDivide(viewController.hpNavItem.containerView.bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+            if ( viewController.hpNavItem.hideNavBar ) {
+                
+                contentFrame = viewController.hpNavItem.containerView.bounds;
             }
             else {
-
-                // iOS7 StatusBar inclus
-                CGRect bounds = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
-                                           kHeightStatusBar,
-                                           viewController.hpNavItem.containerView.bounds.size.width,
-                                           viewController.hpNavItem.containerView.bounds.size.height-kHeightStatusBar);
-            
-                CGRectDivide(bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+                
+                // Divise le containerView en 2 parties : la navBar et le contentView
+                
+                if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+                    
+                    CGRectDivide(viewController.hpNavItem.containerView.bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+                }
+                else {
+                    
+                    // iOS7 StatusBar inclus
+                    CGRect bounds = CGRectMake(viewController.hpNavItem.containerView.bounds.origin.x,
+                                               kHeightStatusBar,
+                                               viewController.hpNavItem.containerView.bounds.size.width,
+                                               viewController.hpNavItem.containerView.bounds.size.height-kHeightStatusBar);
+                    
+                    CGRectDivide(bounds, &navBarFrame, &contentFrame, kNavBarHeight, CGRectMinYEdge);
+                }
+                
+                navBar = [[UINavigationBar alloc] initWithFrame:navBarFrame];
+                
+                navBar.delegate = self;  // pour gerer l'appui sur le BackButton
+                
+                if (viewController.hpNavItem.colorNavBar) {
+                    
+                    navBar.translucent = NO;
+                    navBar.barTintColor = viewController.hpNavItem.colorNavBar;
+                    viewController.hpNavItem.containerView.backgroundColor = viewController.hpNavItem.colorNavBar;
+                }
             }
-            
-            navBar = [[UINavigationBar alloc] initWithFrame:navBarFrame];
-            navBar.delegate = self;  // pour gerer l'appui sur le BackButton
         }
         
         UIViewController *previousViewController = [self ancestorViewControllerTo:viewController];
@@ -425,7 +442,7 @@
         }
         
         // Add btnAccesMenu
-        if (self.flagPermanentDirectAccesMenu && viewController != self.menuViewController) {
+        if (self.flagPermanentDirectAccesMenu && viewController != self.menuViewController && !viewController.hpNavItem.hideNavBar) {
             
            // NSLog(@"check leftBarButtonItem %@ ...", viewController.navigationItem.leftBarButtonItem);
             
@@ -481,8 +498,9 @@
             [navBar pushNavigationItem:viewController.navigationItem animated:NO];
         
         // Add NavBar in ContainerView
-        if (navBar)
+        if (navBar) {
             [viewController.hpNavItem.containerView addSubview:navBar];
+        }
         
         // Add ContentView in ContainerView
         viewController.view.frame = contentFrame;
