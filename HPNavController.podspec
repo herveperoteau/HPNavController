@@ -6,6 +6,7 @@ Pod::Spec.new do |s|
   s.author   = { 'Herve Peroteau' => 'herve.peroteau@gmail.com' }
   s.description = 'NavController like MailBox'
   s.platform = :ios
+  s.ios.deployment_target = "7.0"
   s.source = { :git => "https://github.com/herveperoteau/HPNavController.git"}
   s.source_files = 'HPNavController'
   s.requires_arc = true
