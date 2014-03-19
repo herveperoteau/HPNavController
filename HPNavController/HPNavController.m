@@ -42,7 +42,7 @@
 
 
 #define kNavBarHeight 44
-#define kAnimationDuration 0.35
+#define kAnimationDuration 0.45
 #define kReduceBelow 0.9
 #define kPanGesturePercentageToInducePop 0.3
 #define kPanGesturePercentageToInducePush 0.6
@@ -595,6 +595,8 @@
     }
     
     viewController.hpNavItem.containerView.userInteractionEnabled = YES;
+    [self setScrollCapacityToTop:YES withViewController:viewController];
+    
     [self subviewsUserInteraction:viewController enabled:YES];
     
     if (previousViewController) {
@@ -606,6 +608,8 @@
         }
         
         previousViewController.hpNavItem.containerView.userInteractionEnabled = NO;
+        [self setScrollCapacityToTop:NO withViewController:previousViewController];
+
         [self subviewsUserInteraction:previousViewController enabled:NO];
     }
 
@@ -815,6 +819,7 @@
         }
         
         previousViewController.hpNavItem.containerView.userInteractionEnabled = YES;
+        [self setScrollCapacityToTop:YES withViewController:previousViewController];
         [self subviewsUserInteraction:previousViewController enabled:YES];
 
 //        if (previousViewController == self.menuViewController) {
@@ -826,6 +831,9 @@
     }
     
     if (viewController.hpNavItem.visiblePartialOverMenuView) {
+        
+        [self subviewsUserInteraction:viewController enabled:NO];
+        [self setScrollCapacityToTop:NO withViewController:viewController];
 
         [viewController.hpNavItem.containerView removeAllGestureRecognizer];
         
@@ -865,6 +873,45 @@
     
     if (completion)
         completion();
+}
+
+#pragma mark - ScrollToTop when tap statusBar
+
+-(void) setScrollCapacityToTop:(BOOL)scrollToTop withViewController:(UIViewController *)viewController {
+    
+    UIScrollView *firstScrollView = nil;
+    
+//    NSLog(@"%@.setScrollCapacityToTop:%d withViewController:%@", self.class, scrollToTop, viewController.class);
+
+    // Only one can be scrollsToTop !!!
+    
+    if ([viewController.view isKindOfClass:[UIScrollView class]]) {
+        
+        UIScrollView *scrollView = (UIScrollView *)viewController.view;
+        scrollView.scrollsToTop = NO;
+        if (firstScrollView==nil) {
+            firstScrollView = scrollView;
+        }
+    }
+
+    // scan subviews
+    for (UIView *view in viewController.view.subviews) {
+        
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            UIScrollView *scrollView = (UIScrollView *)view;
+            scrollView.scrollsToTop = NO;
+            if (firstScrollView == nil) {
+                firstScrollView = scrollView;
+            }
+        }
+    }
+
+    // Activate first scrollView
+    if (scrollToTop && firstScrollView) {
+        
+//        NSLog(@"%@.setScrollCapacityToTop activate scrollToTop %@ %@", self.class, viewController.class, firstScrollView.class);
+        firstScrollView.scrollsToTop = scrollToTop;
+    }
 }
 
 
@@ -1078,7 +1125,6 @@
             }];
         }
     }
-    
 }
 
 
@@ -1117,11 +1163,15 @@
             // Retour a gauche (plein ecran)
             CGRect finalFrame = pannedViewController.hpNavItem.containerView.frame;
             finalFrame.origin.x = 0;
+            
             [UIView animateWithDuration:0.3
+                                  delay:0.0
+                 usingSpringWithDamping:0.7
+                  initialSpringVelocity:0.0
+                                options:UIViewAnimationOptionCurveLinear
                              animations:^{
                                  
                                  pannedViewController.hpNavItem.containerView.frame = finalFrame;
-                
                              }
                              completion:^(BOOL finished) {
                                  
@@ -1129,8 +1179,23 @@
                                      //self.menuViewController.hpNavItem.containerView.hidden = YES;
                                      pannedViewController.hpNavItem.visiblePartialOverMenuView = NO;
                                  }
-                             }
-             ];
+                             }];
+
+            
+//            [UIView animateWithDuration:0.3
+//                             animations:^{
+//                                 
+//                                 pannedViewController.hpNavItem.containerView.frame = finalFrame;
+//                
+//                             }
+//                             completion:^(BOOL finished) {
+//                                 
+//                                 if (self.menuViewController) {
+//                                     //self.menuViewController.hpNavItem.containerView.hidden = YES;
+//                                     pannedViewController.hpNavItem.visiblePartialOverMenuView = NO;
+//                                 }
+//                             }
+//             ];
         }
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
