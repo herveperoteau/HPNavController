@@ -746,28 +746,28 @@
             duration = kAnimationDuration / 2;
         }
         
-//        [UIView animateWithDuration:duration
-//                              delay:0.0
-//             usingSpringWithDamping:0.7
-//              initialSpringVelocity:0.0
-//                            options:UIViewAnimationOptionCurveLinear
-//                         animations:^{
-//                             
-//                             [self popEndTransitionLayout:viewController];
-//                         }
-//                         completion:^(BOOL finished) {
-//                             
-//                             completion();
-//                         }];
-
-        [UIView animateWithDuration:duration animations:^{
+        if (viewController.hpNavItem.visiblePartialOverMenuView) {
+        
+            [UIView animateWithDuration:duration
+                                  delay:0.0
+                 usingSpringWithDamping:0.7
+                  initialSpringVelocity:0.0
+                                options:UIViewAnimationOptionCurveLinear
+                             animations:^{
+                                 [self popEndTransitionLayout:viewController];
+                             }
+                             completion:^(BOOL finished) {
+                                 completion();
+                             }];
+        }
+        else {
             
-            [self popEndTransitionLayout:viewController];
-            
-        } completion:^(BOOL finished) {
-            
-            completion();
-        }];
+            [UIView animateWithDuration:duration animations:^{
+                [self popEndTransitionLayout:viewController];
+            } completion:^(BOOL finished) {
+                completion();
+            }];
+        }
     }
     else {
         
