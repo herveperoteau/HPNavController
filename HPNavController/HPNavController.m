@@ -884,27 +884,22 @@
 //    NSLog(@"%@.setScrollCapacityToTop:%d withViewController:%@", self.class, scrollToTop, viewController.class);
 
     // Only one can be scrollsToTop !!!
-    
     if ([viewController.view isKindOfClass:[UIScrollView class]]) {
-        
         UIScrollView *scrollView = (UIScrollView *)viewController.view;
-        scrollView.scrollsToTop = NO;
-        if (firstScrollView==nil) {
-            firstScrollView = scrollView;
-        }
+        firstScrollView = scrollView;
     }
 
     // scan subviews
     for (UIView *view in viewController.view.subviews) {
-        
         if ([view isKindOfClass:[UIScrollView class]]) {
             UIScrollView *scrollView = (UIScrollView *)view;
-            scrollView.scrollsToTop = NO;
             if (firstScrollView == nil) {
                 firstScrollView = scrollView;
             }
         }
     }
+
+    [self resetScrollToTopForSubviews:viewController.view];
 
     // Activate first scrollView
     if (scrollToTop && firstScrollView) {
@@ -914,6 +909,25 @@
     }
 }
 
+
+-(void) resetScrollToTopForSubviews:(UIView *)view {
+
+    if ([view isKindOfClass:[UIScrollView class]]) {
+        
+//        NSLog(@"%@.resetScrollToTopForSubviews %@", self.class, view.class);
+        UIScrollView *scrollView = (UIScrollView *)view;
+        scrollView.scrollsToTop = NO;
+    }
+    
+    if (view.subviews.count == 0) {
+        return;
+    }
+
+    // recurssif
+    for (UIView *v in view.subviews) {
+        [self resetScrollToTopForSubviews:v];
+    }
+}
 
 #pragma mark - Delegate methods
 
