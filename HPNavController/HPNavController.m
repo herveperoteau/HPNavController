@@ -272,7 +272,7 @@
     
     NSUInteger index = [self.childViewControllers indexOfObject:viewController];
     
-    for (int i=index-1; i>=0; i--) {
+    for (NSInteger i=index-1; i>=0; i--) {
         
         UIViewController *vc = self.childViewControllers[i];
         
