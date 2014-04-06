@@ -11,6 +11,7 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *textSelectedColor;
 @property (nonatomic, strong) UIFont *fontTitle;
+@property (nonatomic, strong) UIFont *fontTitleSelected;
 @property (nonatomic, strong) UIFont *fontQuantity;
 @property (nonatomic, assign) NSInteger heightIcon;
 

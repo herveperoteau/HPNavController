@@ -181,11 +181,13 @@
     if (selected) {
         
         [labelTitle setTextColor:_textSelectedColor];
+        labelTitle.font = self.fontTitleSelected;
         [labelQuantity setTextColor:_textSelectedColor];
     }
     else {
         
         [labelTitle setTextColor:_textColor];
+        labelTitle.font = self.fontTitle;
         [labelQuantity setTextColor:_textColor];
     }
 }
@@ -211,7 +213,6 @@
     labelQuantity.text = quantity;
     imageViewIcon.image = icon;
 }
-
 
 @end
 
