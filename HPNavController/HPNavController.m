@@ -50,11 +50,14 @@
 
 @interface HPNavController () <UIGestureRecognizerDelegate>
 
-    @property(nonatomic, readwrite, strong) UIViewController *focusedViewController;
-    @property(nonatomic, readwrite, strong) UIViewController *menuViewController;
-    @property(nonatomic, strong) UIImage *iconBtnMenu;
-    @property(nonatomic, strong) UIImage *iconBtnMenuSelected;
-    @property(nonatomic, assign) BOOL flagPermanentDirectAccesMenu;
+@property(nonatomic, readwrite, strong) UIViewController *focusedViewController;
+@property(nonatomic, readwrite, strong) UIViewController *menuViewController;
+@property(nonatomic, strong) UIImage *iconBtnMenu;
+@property(nonatomic, strong) UIImage *iconBtnMenuSelected;
+@property(nonatomic, assign) BOOL flagPermanentDirectAccesMenu;
+
+// prevent double tap
+@property(nonatomic, assign) BOOL flagPushInProgress;
 
 @end
 
@@ -88,6 +91,13 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if (self.flagPushInProgress) {
+        NSLog(@"%@.pushViewController:%@ : Push already in progress !!", self.class, viewController.class);
+        return;
+    }
+    
+    self.flagPushInProgress = YES;
     
     UIViewController *top = self.topViewController;
     
@@ -655,7 +665,9 @@
 //    
 //        [viewController endAppearanceTransition];
     }
-        
+    
+    self.flagPushInProgress = NO;
+    
     //NSLog(@"<<< pushEnded pour %@", viewController.class);
 }
 
